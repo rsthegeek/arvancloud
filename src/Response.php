@@ -111,7 +111,7 @@ class Response implements \ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->data[$offset];
     }
@@ -122,7 +122,8 @@ class Response implements \ArrayAccess
      *
      * @return mixed|void
      */
-    public function offsetSet($offset, $value)
+    #[\ReturnTypeWillChange]
+    public function offsetSet(mixed $offset, mixed $value)
     {
         return $this->data[$offset] = $value;
     }
@@ -130,7 +131,7 @@ class Response implements \ArrayAccess
     /**
      * @param mixed $offset
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset): void
     {
         unset($this->data[$offset]);
     }
